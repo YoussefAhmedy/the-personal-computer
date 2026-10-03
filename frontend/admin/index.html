@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setup Utility — THE PERSONAL COMPUTER</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23070a08'/><rect x='3' y='4' width='10' height='7' fill='none' stroke='%2347d97f'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=IBM+Plex+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+  <!-- ---------- login ---------- -->
+  <div id="login-screen">
+    <div id="login-box">
+      <h1>SETUP<br>UTILITY</h1>
+      <div class="sub">THE PERSONAL COMPUTER — admin console</div>
+      <form id="login-form">
+        <div id="login-err"></div>
+        <div class="field"><label for="login-username">Username</label><input id="login-username"
+            autocomplete="username" required></div>
+        <div class="field"><label for="login-password">Password</label><input id="login-password" type="password"
+            autocomplete="current-password" required></div>
+        <button class="btn primary block" id="login-submit" type="submit">LOG IN</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ---------- shell ---------- -->
+  <div id="app-shell">
+    <div id="topbar">
+      <span class="brand">SETUP UTILITY</span>
+      <span class="spacer"></span>
+      <a class="viewlink" href="/" target="_blank" rel="noopener">↗ view the machine</a>
+      <span id="whoami"></span>
+      <button class="btn small" id="logout-btn">LOG OUT</button>
+    </div>
+    <nav id="sidebar"></nav>
+    <main id="main"></main>
+  </div>
+
+  <!-- ---------- shared slide-in form panel ---------- -->
+  <div class="overlay" id="overlay"></div>
+  <div id="formpanel">
+    <div class="fp-head">
+      <h3 id="fp-title">EDIT</h3><button type="button" class="closex" id="fp-close-x">✕</button>
+    </div>
+    <form id="fp-form">
+      <div class="fp-body" id="fp-body"></div>
+      <div class="fp-foot"><button type="button" class="btn" id="fp-cancel">CANCEL</button><button type="submit"
+          class="btn primary" id="fp-save">SAVE</button></div>
+    </form>
+  </div>
+
+  <div id="a-toasts"></div>
+
+  <script src="../js/api.js"></script>
+  <script src="admin.js"></script>
+</body>
+
+</html>

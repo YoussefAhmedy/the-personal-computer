@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>THE PERSONAL COMPUTER</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect x='1' y='2' width='14' height='10' rx='2' fill='%236366f1'/><rect x='3' y='4' width='10' height='6' fill='%231c2b45'/><rect x='6' y='13' width='4' height='2' fill='%23d8d0b8'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Arabic:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/outside.css">
+<link rel="stylesheet" href="css/desktop.css">
+<link rel="stylesheet" href="css/apps.css">
+<link rel="stylesheet" href="css/finale.css">
+</head>
+<body>
+<canvas id="noise"></canvas>
+<div id="crt-scan"></div><div id="crt-vig"></div><div id="crt-flicker"></div>
+
+<!-- 01 · OUTSIDE -->
+<section id="outside">
+  <div id="monitor">
+    <div id="bezel"><div id="screen">
+      <canvas id="screen-static"></canvas>
+      <div id="screen-glow"></div><div id="screen-glass"></div>
+    </div></div>
+    <div id="panel">
+      <span id="brand">PC&#8209;1988</span>
+      <div id="panel-mid"><div class="slot"></div><div id="led"></div><button id="pwrbtn" aria-label="power"></button></div>
+      <div id="jacks"><div class="jack yellow"></div><div class="jack"></div></div>
+    </div>
+  </div>
+  <div id="stand"></div>
+  <div id="hint">CLICK TO ENTER<span class="blinkc">&#9646;</span></div>
+</section>
+
+<!-- 03 · BOOT -->
+<section id="boot">
+  <pre id="bootlog"></pre>
+  <div id="passgate">
+    <form id="pass-form" autocomplete="off" style="display:contents">
+      <span class="pg-label">&gt;</span>
+      <span id="pass-input-wrap"><input id="pass-input" type="password" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Access code"></span>
+    </form>
+  </div>
+  <div id="pass-hint" class="hide"></div>
+</section>
+
+<!-- 04 · DESKTOP -->
+<section id="desktop">
+  <!-- Dynamic wallpaper -->
+  <video id="wall-video" autoplay muted loop playsinline preload="auto"
+    poster="" src="assets/wallpaper.mp4"></video>
+  <canvas id="wall"></canvas>
+  <div id="wall-overlay"></div>
+
+  <!-- Menu bar -->
+  <div id="menubar">
+    <div class="mb-left">
+      <span class="mb-apple">⌘</span>
+      <span class="mb-app-name">Finder</span>
+      <span class="mb-menu-item">File</span>
+      <span class="mb-menu-item">Edit</span>
+      <span class="mb-menu-item">View</span>
+    </div>
+    <div class="mb-right">
+      <span id="clock" class="mb-control"></span>
+    </div>
+  </div>
+
+  <div id="icons"></div>
+  <div id="hiddendot" title=" "></div>
+  <div id="winlayer"></div>
+
+  <!-- Dock -->
+  <div id="taskbar"></div>
+</section>
+
+<div id="toasts"></div>
+<div class="modal" id="modal"><div class="window settled" id="modalwin"></div></div>
+<div id="blackout"></div>
+
+<!-- 14 · FINALE -->
+<section id="finale">
+  <canvas id="hearts"></canvas>
+  <pre id="final-term"></pre>
+  <div id="final-card">
+    <div class="big">HAPPY<br>BIRTHDAY</div>
+    <div class="msg" id="final-msg"></div>
+    <div class="fbtns">
+      <button class="pbtn pink" id="btn-replay">▶ REPLAY</button>
+      <button class="pbtn" id="btn-explore">▶ EXPLORE AGAIN</button>
+    </div>
+  </div>
+</section>
+
+<script src="js/utils.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/pixelart.js"></script>
+<script src="js/api.js"></script>
+<script src="js/state.js"></script>
+<script src="js/windows.js"></script>
+<script src="js/apps/about.js"></script>
+<script src="js/apps/memories.js"></script>
+<script src="js/apps/photos.js"></script>
+<script src="js/apps/notes.js"></script>
+<script src="js/apps/messages.js"></script>
+<script src="js/apps/files.js"></script>
+<script src="js/apps/videos.js"></script>
+<script src="js/apps/music.js"></script>
+<script src="js/apps/game.js"></script>
+<script src="js/finale.js"></script>
+<script src="js/boot.js"></script>
+</body>
+</html>

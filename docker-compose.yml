@@ -1,0 +1,39 @@
+# THE PERSONAL COMPUTER — one-command deployment.
+#
+#   docker compose up --build
+#
+# Then open http://localhost:3000. Data (the SQLite database and any
+# uploaded photos/videos/audio) persists in the two named volumes below
+# across restarts and rebuilds — deleting the containers doesn't delete
+# the memories.
+#
+# Configuration comes from backend/.env (copy backend/.env.example if
+# you haven't already). Change SITE_PASSCODE and ADMIN_PASSWORD there
+# before sharing the deployed link with anyone.
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - backend/.env
+    environment:
+      - NODE_ENV=production
+      - TRUST_PROXY=false
+      # Forcing production mode makes session cookies "Secure" (HTTPS-only)
+      # by default. That's fine for http://localhost (browsers special-case
+      # it) but will silently break logins if you deploy this to a real
+      # server or LAN address without HTTPS in front of it. If that's your
+      # situation, uncomment the next line rather than leaving logins broken:
+      # - COOKIE_SECURE=false
+    volumes:
+      - pc-data:/app/data
+      - pc-uploads:/app/uploads
+    restart: unless-stopped
+
+volumes:
+  pc-data:
+  pc-uploads:
