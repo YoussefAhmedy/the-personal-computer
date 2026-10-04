@@ -4,11 +4,11 @@
 
 /* ---------- shared media frame ---------- */
 .mphoto{padding:14px;display:flex;gap:14px;}
-.mphoto .shot{flex:1.5;min-width:0;}
-.mphoto canvas,.mphoto img,.mphoto video{width:100%;border-radius:6px;background:#000;
+.mphoto .shot{flex:1.5;min-width:0;display:flex;justify-content:center;align-items:flex-start;}
+.mphoto canvas,.mphoto img,.mphoto video{max-width:100%;width:auto;height:auto;border-radius:6px;background:rgba(0,0,0,0.04);
   box-shadow:0 2px 10px rgba(0,0,0,0.12);}
-.mphoto canvas{image-rendering:pixelated;}
-.mphoto img,.mphoto video{object-fit:cover;max-height:clamp(200px,40vh,400px);}
+.mphoto canvas{image-rendering:pixelated;background:#000;}
+.mphoto img,.mphoto video{object-fit:contain;max-height:clamp(200px,40vh,400px);}
 .mmeta{flex:1;font-family:var(--sys);font-size:13px;display:flex;flex-direction:column;gap:6px;min-width:140px;}
 .mmeta .fid{color:var(--accent);font-family:var(--term);font-size:12px;letter-spacing:.06em;}
 .mmeta .ft{font-size:16px;font-weight:600;}
@@ -34,7 +34,7 @@
   border-radius:50%;background:var(--accent);transform:translateY(-50%);
   box-shadow:0 0 0 3px rgba(99,102,241,0.15);}
 .memcard:hover{background:rgba(255,255,255,0.85);box-shadow:0 2px 12px rgba(0,0,0,0.06);transform:translateX(3px);}
-.memcard canvas,.memcard img{width:88px;height:66px;object-fit:cover;border-radius:5px;
+.memcard canvas,.memcard img{width:88px;height:66px;object-fit:cover;object-position:top center;border-radius:5px;
   border:0.5px solid rgba(0,0,0,0.08);background:#000;flex:none;}
 .memcard canvas{image-rendering:pixelated;}.memcard img{image-rendering:auto;}
 .memcard .mem-info{flex:1;min-width:0;}
@@ -59,7 +59,7 @@
 .phitem{border-radius:6px;overflow:hidden;background:#f5f5f9;
   border:0.5px solid rgba(0,0,0,0.06);transition:all var(--dur-fast);cursor:default;}
 .phitem:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,0.1);}
-.phitem canvas,.phitem img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#000;}
+.phitem canvas,.phitem img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top center;background:#000;}
 .phitem canvas{image-rendering:pixelated;}.phitem img{image-rendering:auto;}
 .phitem .pl{font-family:var(--term);font-size:10px;padding:5px 6px;color:var(--ink-tertiary);}
 
