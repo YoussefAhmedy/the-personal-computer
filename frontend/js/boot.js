@@ -83,7 +83,7 @@ function runPasscodeGate() {
       busy = true;
       passInput.disabled = true;
       try {
-        if (val !== "welcome") {
+        if (val.toLowerCase() !== "welcome") {
           throw new Error("ACCESS DENIED — incorrect code. Try again.");
         }
         sfx.boot();
