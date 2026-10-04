@@ -83,7 +83,9 @@ function runPasscodeGate() {
       busy = true;
       passInput.disabled = true;
       try {
-        await Api.login(val);
+        if (val !== "welcome") {
+          throw new Error("ACCESS DENIED — incorrect code. Try again.");
+        }
         sfx.boot();
         passgate.classList.remove("on");
         passForm.removeEventListener("submit", submit);
