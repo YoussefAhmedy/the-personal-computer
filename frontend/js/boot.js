@@ -65,46 +65,6 @@ async function typeLine(text, cls) {
   bootlog.appendChild(document.createTextNode("\n"));
 }
 
-function runPasscodeGate() {
-  return new Promise((resolve) => {
-    passgate.classList.add("on");
-    passHint.classList.remove("hide");
-    passHint.textContent = "this machine is locked. enter the code you were given.";
-    passInput.value = "";
-    passInput.disabled = false;
-    setTimeout(() => passInput.focus(), 50);
-
-    let busy = false;
-    async function submit(e) {
-      e.preventDefault();
-      if (busy) return;
-      const val = passInput.value;
-      if (!val) return;
-      busy = true;
-      passInput.disabled = true;
-      try {
-        if (val.toLowerCase() !== "welcome") {
-          throw new Error("ACCESS DENIED — incorrect code. Try again.");
-        }
-        sfx.boot();
-        passgate.classList.remove("on");
-        passForm.removeEventListener("submit", submit);
-        resolve(true);
-      } catch (err) {
-        sfx.deny();
-        passgate.classList.add("shake");
-        setTimeout(() => passgate.classList.remove("shake"), 320);
-        passInput.value = "";
-        passInput.disabled = false;
-        passHint.textContent = err.message || "ACCESS DENIED — incorrect code. Try again.";
-        passInput.focus();
-        busy = false;
-      }
-    }
-    passForm.addEventListener("submit", submit);
-  });
-}
-
 async function runBoot() {
   boot.style.display = "block";
   $("#blackout").classList.remove("on");
@@ -112,13 +72,7 @@ async function runBoot() {
   await sleep(300);
   for (const [t, c] of BOOT_LINES_PRE) await typeLine(t, c);
 
-  let already = false;
-  // Removed API check to rely on memory: forces prompt on every refresh/restart.
-
-  if (!already) {
-    await typeLine("ENTER ACCESS CODE:", "");
-    await runPasscodeGate();
-  }
+  await typeLine("Welcome Soo", "");
 
   await sleep(150);
   for (const [t, c] of BOOT_LINES_POST) {
