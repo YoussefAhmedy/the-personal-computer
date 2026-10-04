@@ -4,138 +4,315 @@
    ============================================================ */
 
 /* ---------- tokens ---------- */
-:root{
+:root {
   /* Surface / window chrome */
-  --sys-bg:#1b1b2f;
-  --menubar-bg:rgba(28,28,50,0.72);
-  --menubar-h:28px;
-  --win-chrome:rgba(246,246,250,0.92);
-  --win-chrome-inactive:rgba(240,240,244,0.82);
-  --win-body:#f8f8fc;
-  --win-border:rgba(0,0,0,0.14);
+  --sys-bg: #1b1b2f;
+  --menubar-bg: rgba(28, 28, 50, 0.72);
+  --menubar-h: 28px;
+  --win-chrome: rgba(246, 246, 250, 0.92);
+  --win-chrome-inactive: rgba(240, 240, 244, 0.82);
+  --win-body: #f8f8fc;
+  --win-border: rgba(0, 0, 0, 0.14);
   --win-shadow:
-    0 22px 70px rgba(0,0,0,0.32),
-    0 4px 16px rgba(0,0,0,0.12),
-    0 0 0 0.5px rgba(0,0,0,0.06);
+    0 22px 70px rgba(0, 0, 0, 0.32),
+    0 4px 16px rgba(0, 0, 0, 0.12),
+    0 0 0 0.5px rgba(0, 0, 0, 0.06);
   --win-shadow-inactive:
-    0 8px 28px rgba(0,0,0,0.18),
-    0 2px 8px rgba(0,0,0,0.08),
-    0 0 0 0.5px rgba(0,0,0,0.04);
-  --win-radius:10px;
-  --titlebar-h:38px;
+    0 8px 28px rgba(0, 0, 0, 0.18),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    0 0 0 0.5px rgba(0, 0, 0, 0.04);
+  --win-radius: 10px;
+  --titlebar-h: 38px;
 
   /* Dock */
-  --dock-bg:rgba(28,28,50,0.55);
-  --dock-blur:24px;
-  --dock-h:56px;
-  --dock-icon:40px;
-  --dock-radius:14px;
-  --dock-gap:3px;
+  --dock-bg: rgba(28, 28, 50, 0.55);
+  --dock-blur: 24px;
+  --dock-h: 56px;
+  --dock-icon: 40px;
+  --dock-radius: 14px;
+  --dock-gap: 3px;
 
   /* Traffic lights */
-  --tl-close:#ff5f57;
-  --tl-minimize:#febc2e;
-  --tl-zoom:#28c840;
-  --tl-inactive:#d4d4d8;
-  --tl-size:12px;
-  --tl-gap:8px;
+  --tl-close: #ff5f57;
+  --tl-minimize: #febc2e;
+  --tl-zoom: #28c840;
+  --tl-inactive: #d4d4d8;
+  --tl-size: 12px;
+  --tl-gap: 8px;
 
   /* Accent */
-  --accent:#6366f1;
-  --accent-hover:#818cf8;
-  --green:#47d97f;
-  --green-dim:#2e8f56;
-  --cyan:#6fd3d8;
-  --pink:#ff9ecb;
-  --amber:#f0c060;
-  --red:#ff5f5f;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --green: #47d97f;
+  --green-dim: #2e8f56;
+  --cyan: #6fd3d8;
+  --pink: #ff9ecb;
+  --amber: #f0c060;
+  --red: #ff5f5f;
 
   /* Text */
-  --ink:#1a1a2e;
-  --ink-secondary:rgba(0,0,0,0.55);
-  --ink-tertiary:rgba(0,0,0,0.35);
-  --ink-on-dark:rgba(255,255,255,0.88);
-  --ink-on-dark-dim:rgba(255,255,255,0.5);
+  --ink: #1a1a2e;
+  --ink-secondary: rgba(0, 0, 0, 0.55);
+  --ink-tertiary: rgba(0, 0, 0, 0.35);
+  --ink-on-dark: rgba(255, 255, 255, 0.88);
+  --ink-on-dark-dim: rgba(255, 255, 255, 0.5);
 
   /* Fonts */
-  --px:'Press Start 2P',monospace;
-  --term:'VT323',monospace;
-  --mono:'IBM Plex Mono',monospace;
-  --sys:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',system-ui,sans-serif;
-  --ar:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
+  --px: 'Press Start 2P', monospace;
+  --term: 'VT323', monospace;
+  --mono: 'IBM Plex Mono', monospace;
+  --sys: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --ar: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
 
   /* Animation */
-  --ease-out-quart:cubic-bezier(0.25,1,0.5,1);
-  --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
-  --dur-fast:0.15s;
-  --dur-open:0.26s;
-  --dur-close:0.2s;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 0.15s;
+  --dur-open: 0.26s;
+  --dur-close: 0.2s;
 
   /* Layout */
-  --taskbar-h:calc(var(--dock-h) + 16px);
+  --taskbar-h: calc(var(--dock-h) + 16px);
 }
 
 /* ---------- resets ---------- */
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%}
-body{
-  background:var(--sys-bg); color:var(--ink);
-  font-family:var(--sys); font-size:13px;
-  overflow:hidden; cursor:default;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent
 }
-body.grabbing{cursor:grabbing}
-[dir="rtl"]{font-family:var(--ar); direction:rtl; text-align:right}
-button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
-input,select,textarea{font-family:inherit;color:inherit}
-img,canvas,video{display:block}
-::selection{background:var(--accent);color:#fff}
-a{color:inherit}
+
+html,
+body {
+  height: 100%
+}
+
+body {
+  background: var(--sys-bg);
+  color: var(--ink);
+  font-family: var(--sys);
+  font-size: 13px;
+  overflow: hidden;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body.grabbing {
+  cursor: grabbing
+}
+
+[dir="rtl"] {
+  font-family: var(--ar);
+  direction: rtl;
+  text-align: right
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  color: inherit
+}
+
+img,
+canvas,
+video {
+  display: block
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff
+}
+
+a {
+  color: inherit
+}
 
 /* keyboard focus */
-button:focus-visible, input:focus-visible, a:focus-visible, [tabindex]:focus-visible{
-  outline:2px solid var(--accent); outline-offset:2px; border-radius:4px;
+button:focus-visible,
+input:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* ---------- CRT fx (very subtle) ---------- */
-#crt-scan{position:fixed;inset:0;z-index:9000;pointer-events:none;
-  background:repeating-linear-gradient(0deg, rgba(0,0,0,.025) 0 1px, transparent 1px 3px);
-  mix-blend-mode:multiply;}
-#crt-vig{position:fixed;inset:0;z-index:9001;pointer-events:none;
-  background:radial-gradient(120% 100% at 50% 50%, transparent 75%, rgba(0,0,0,.12) 100%);}
-#crt-flicker{display:none;}
-#noise{position:fixed;inset:0;width:100%;height:100%;z-index:9002;pointer-events:none;opacity:.02;image-rendering:pixelated;}
-#blackout{position:fixed;inset:0;z-index:9500;background:#000;opacity:0;pointer-events:none;transition:opacity .45s;}
-#blackout.on{opacity:1;pointer-events:all}
+#crt-scan {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .025) 0 1px, transparent 1px 3px);
+  mix-blend-mode: multiply;
+}
+
+#crt-vig {
+  position: fixed;
+  inset: 0;
+  z-index: 9001;
+  pointer-events: none;
+  background: radial-gradient(120% 100% at 50% 50%, transparent 75%, rgba(0, 0, 0, .12) 100%);
+}
+
+#crt-flicker {
+  display: none;
+}
+
+#noise {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9002;
+  pointer-events: none;
+  opacity: .02;
+  image-rendering: pixelated;
+}
+
+#blackout {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .45s;
+}
+
+#blackout.on {
+  opacity: 1;
+  pointer-events: all
+}
 
 /* ---------- toasts ---------- */
-#toasts{position:fixed;right:12px;top:calc(var(--menubar-h) + 10px);z-index:8500;display:flex;flex-direction:column;gap:6px;pointer-events:none;max-width:300px;}
-.toast{
-  background:rgba(28,28,50,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.08);border-radius:10px;
-  padding:8px 14px;font-family:var(--sys);font-size:12px;color:var(--ink-on-dark);
-  box-shadow:0 6px 20px rgba(0,0,0,0.25);
-  animation:toastin .3s var(--ease-out-quart);}
-.toast.err{background:rgba(80,20,20,0.88);border-color:rgba(255,95,95,0.2);}
-@keyframes toastin{0%{transform:translateY(-12px) scale(0.96);opacity:0}100%{transform:none;opacity:1}}
+#toasts {
+  position: fixed;
+  right: 12px;
+  top: calc(var(--menubar-h) + 10px);
+  z-index: 8500;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: none;
+  max-width: 300px;
+}
+
+.toast {
+  background: rgba(28, 28, 50, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-family: var(--sys);
+  font-size: 12px;
+  color: var(--ink-on-dark);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  animation: toastin .3s var(--ease-out-quart);
+}
+
+.toast.err {
+  background: rgba(80, 20, 20, 0.88);
+  border-color: rgba(255, 95, 95, 0.2);
+}
+
+@keyframes toastin {
+  0% {
+    transform: translateY(-12px) scale(0.96);
+    opacity: 0
+  }
+
+  100% {
+    transform: none;
+    opacity: 1
+  }
+}
 
 /* ---------- buttons ---------- */
-.pbtn{font-family:var(--sys);font-size:12px;font-weight:500;padding:5px 14px;color:#fff;
-  background:var(--accent);border-radius:6px;
-  transition:all var(--dur-fast) ease;
-  box-shadow:0 1px 3px rgba(0,0,0,0.12);}
-.pbtn:hover{background:var(--accent-hover);box-shadow:0 2px 6px rgba(0,0,0,0.15);}
-.pbtn:active{transform:scale(0.97);box-shadow:0 1px 2px rgba(0,0,0,0.1);}
-.pbtn.green{background:var(--green-dim);color:#d6ffe6;}
-.pbtn.green:hover{background:var(--green);color:#08130b;}
-.pbtn.pink{background:#8b2252;color:#ffd6ea;}
-.pbtn.pink:hover{background:#a8305f;}
-.pbtn:disabled{opacity:.35;pointer-events:none;}
+.pbtn {
+  font-family: var(--sys);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 14px;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 6px;
+  transition: all var(--dur-fast) ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
 
-@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
-@keyframes shake{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.pbtn:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
 
-@media (prefers-reduced-motion: reduce){
-  .toast{animation:none;}
+.pbtn:active {
+  transform: scale(0.97);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.pbtn.green {
+  background: var(--green-dim);
+  color: #d6ffe6;
+}
+
+.pbtn.green:hover {
+  background: var(--green);
+  color: #08130b;
+}
+
+.pbtn.pink {
+  background: #8b2252;
+  color: #ffd6ea;
+}
+
+.pbtn.pink:hover {
+  background: #a8305f;
+}
+
+.pbtn:disabled {
+  opacity: .35;
+  pointer-events: none;
+}
+
+@keyframes blink {
+
+  0%,
+  49% {
+    opacity: 1
+  }
+
+  50%,
+  100% {
+    opacity: 0
+  }
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(-3px)
+  }
+
+  75% {
+    transform: translateX(3px)
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
 }
